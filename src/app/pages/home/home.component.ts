@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
     pageTitle: string = 'Home Page';
     pageDescription: string = 'Home Page Description';
     fruta: string = '';
-    frutas: any;
+    frutas!: string[];
 
     ngOnInit(): void {
         const storage = localStorage.getItem('frutas') || '[]';
