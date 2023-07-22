@@ -1,0 +1,30 @@
+<input type="text" placeholder="Digite o seu nome" [(ngModel)]="name" />
+
+<p *ngIf="showName; else semNome">{{ name }}</p>
+
+<!-- <img [src]="image" />
+
+<div>
+    <span [ngStyle]="{color}">{{ name }}</span>
+</div> -->
+
+<div>
+    <h2>Clientes</h2>
+    <ul>
+        <li *ngFor="let person of people" [ngClass]="liClass">
+            Id: {{ person.id }}, Nome: {{ person.name | titlecase }} - Email:
+            {{ person.email }}
+        </li>
+    </ul>
+</div>
+
+<h1>Hoje é {{ today | date : "dd/MM/yyyy" }}</h1>
+
+<ng-template #semNome>
+    <p>Não tem nome!</p>
+    <img [src]="image" />
+</ng-template>
+
+<ng-template #semCliente>
+    <p>Sem clientes cadastrado</p>
+</ng-template>

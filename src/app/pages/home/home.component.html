@@ -1,0 +1,21 @@
+<section>
+    <app-page-title
+        [pageTitle]="pageTitle"
+        [pageDescription]="pageDescription"
+    ></app-page-title>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque at
+        nostrum explicabo ipsa eligendi cupiditate corporis, beatae, quisquam
+        deserunt cum libero similique incidunt commodi odio ullam sed magni.
+        Minus, placeat.
+    </p>
+
+    <input type="text" [(ngModel)]="fruta" />
+    <button (click)="addFruta()">cadastrar</button>
+
+    <ul>
+        <li *ngFor="let fruta of frutas">
+            {{ fruta }} <button (click)="deletarFruta(fruta)">excluir</button>
+        </li>
+    </ul>
+</section>
