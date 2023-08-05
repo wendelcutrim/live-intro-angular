@@ -1,0 +1,29 @@
+<header>
+    <h1>Primeiro projeto</h1>
+    <nav>
+        <ul>
+            <li *ngFor="let link of menus">
+                <a
+                    [routerLink]="[link.rota]"
+                    [routerLinkActive]="['active']"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    {{ link.texto }}
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- <header>
+    <h1>Primeiro projeto</h1>
+    <nav>
+        <ul>
+            <li>
+                <a [routerLink]="['/']">Home</a>
+                <a [routerLink]="['teste']">Teste</a>
+                <a [routerLink]="['/products']">Produtos</a>
+            </li>
+        </ul>
+    </nav>
+</header> -->

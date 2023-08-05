@@ -1,0 +1,14 @@
+<div>
+    <h2>Cadastro pessoa</h2>
+    <input
+        type="text"
+        [(ngModel)]="form.nome"
+        placeholder="digite o seu nome"
+    />
+    <input
+        type="text"
+        [(ngModel)]="form.email"
+        placeholder="digite o seu email"
+    />
+    <button (click)="emitPessoa()">Enviar</button>
+</div>

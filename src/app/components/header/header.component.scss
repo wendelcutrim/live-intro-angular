@@ -1,0 +1,12 @@
+header {
+    border: 2px solid black;
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+.active {
+    background-color: black;
+    color: white;
+    padding: 4px;
+}

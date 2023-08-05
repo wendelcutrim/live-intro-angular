@@ -1,0 +1,30 @@
+@function rem-calc($size) {
+    $value: calc($size / 16);
+    @return #{$value}rem;
+}
+
+$max: 50;
+$offset: 1;
+$unit: "px";
+
+@mixin list-loop($className, $styleName) {
+    $i: 0;
+    @while $i <= $max {
+        #{$className + $i} {
+            #{$styleName}: #{$i + $unit};
+        }
+        $i: $i + $offset;
+    }
+}
+
+@include list-loop(".mt-", "margin-top");
+
+.input {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: rem-calc(5);
+        width: 40%;
+        gap: rem-calc(5);
+    }
+}
