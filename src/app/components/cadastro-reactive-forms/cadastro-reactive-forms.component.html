@@ -1,6 +1,6 @@
 <div>
     <h2 class="mt-40">Cadastro de usuário</h2>
-    <form [formGroup]="cadastroForm">
+    <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
         <!-- ngForm com input Text -->
         <div class="input__wrapper">
             <label for="nome">Nome</label>
@@ -13,6 +13,20 @@
             />
         </div>
 
+        <div
+            *ngIf="cadastroForm.get('nome')?.errors?.['required'] && cadastroForm.get('nome')?.touched"
+        >
+            <p class="error">Nome é obrigatório</p>
+        </div>
+
+        <div
+            *ngIf="cadastroForm.get('nome')?.errors?.['minlength'] && cadastroForm.get('nome')?.touched"
+        >
+            <p class="error">
+                Nome tem que ter no mínimo {{ minLengthName }} caracteres
+            </p>
+        </div>
+
         <div class="input__wrapper">
             <label for="email">email</label>
             <input
@@ -22,6 +36,18 @@
                 autocomplete="off"
                 formControlName="email"
             />
+        </div>
+
+        <div
+            *ngIf="cadastroForm.controls['email']?.errors?.['required'] && cadastroForm.controls['email']?.touched"
+        >
+            <p class="error">Email é obrigatório</p>
+        </div>
+
+        <div
+            *ngIf="cadastroForm.get('email')?.errors?.['pattern'] && cadastroForm.get('email')?.touched"
+        >
+            <p class="error">Insira um email válido</p>
         </div>
 
         <!-- ngForm com input Radio -->
@@ -43,6 +69,15 @@
                 value="feminino"
                 formControlName="sexo"
             />
+        </div>
+
+        <div
+            *ngIf="
+                cadastroForm.get('sexo')?.errors &&
+                cadastroForm.get('sexo')?.touched
+            "
+        >
+            <p class="error">Sexo é obrigatório</p>
         </div>
 
         <!-- ngForm com input Checkbox -->
@@ -78,7 +113,7 @@
         <div>
             <h2>Lanches</h2>
 
-            <select name="comida" ngModel>
+            <select name="comida" formControlName="comida">
                 <option value disabled>Selecione um lanche</option>
                 <option value="x-salada">X-Salada</option>
                 <option value="x-hamburguer">X-Hamburger</option>
@@ -90,7 +125,7 @@
         <!-- ngForm com select simulação de dados da API -->
         <div>
             <h2>Bebidas</h2>
-            <select name="bebida" ngModel>
+            <select name="bebida" formControlName="bebida">
                 <option value disabled>Selecione uma bebida</option>
                 <option *ngFor="let bebida of bebidas" [ngValue]="bebida">
                     {{ bebida.nome }}
@@ -98,6 +133,13 @@
             </select>
         </div>
 
+        <br />
+        <br />
+        <button type="submit" [disabled]="cadastroForm.invalid">
+            cadastrar
+        </button>
+
         <p>{{ cadastroForm.value | json }}</p>
+        <p>Formuláro está válido? {{ cadastroForm.valid | json }}</p>
     </form>
 </div>
