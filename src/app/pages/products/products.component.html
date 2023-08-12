@@ -1,10 +1,28 @@
 <app-page-title [pageTitle]="title"></app-page-title>
 
-<div>
+<section class="products__container">
+    <div class="products__show">
+        <article class="products__list" *ngFor="let product of products" role="link" tabindex="1">
+            <div class="products__card">
+                <h2 [title]="product.title">{{ product.title }}</h2>
+                <div class="products__card-img">
+                    <img [src]="product.image" [alt]="product.title" />
+                </div>
+                <p>{{ product.price | currency : "BRL" }}</p>
+                <div>
+                    <button (click)="redirectProductPage(product.id)">ver detalhes</button>
+                    <!-- <a [routerLink]="['/products', product.id]">ver detalhes</a> -->
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- <div>
     <ul>
         <li *ngFor="let bebida of bebidas">
             <p>Nome: {{ bebida.nome }} | Valor: R${{ bebida.valor }}</p>
             <a [routerLink]="['/products', bebida.id]">Ver detalhes</a>
         </li>
     </ul>
-</div>
+</div> -->

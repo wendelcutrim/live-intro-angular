@@ -1,6 +1,13 @@
-<app-page-title
-    pageTitle="Produto"
-    [pageDescription]="pageDescription"
-></app-page-title>
+<app-page-title pageTitle="Produto" [pageDescription]="pageDescription"></app-page-title>
 
-<h2>Você está na página do produto {{ id }}</h2>
+<h2>{{ product.title }}</h2>
+<div>
+    <img style="height: 200px" [src]="product.image" [alt]="product.image" />
+</div>
+<p>{{ product.description }}</p>
+<span>{{ product.price | currency : "BRL" }}</span>
+<br />
+
+<a [routerLink]="editPageRouter">Editar</a>
+<br />
+<button (click)="deleteProduct(product.id)">Deletar produto</button>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CadastroReactiveFormsComponent } from './components/cadastro-reactive-forms/cadastro-reactive-forms.component';
+import { ProductEditComponent } from './pages/product-edit/product-edit.component';
 
 @NgModule({
     declarations: [
@@ -30,12 +32,14 @@ import { CadastroReactiveFormsComponent } from './components/cadastro-reactive-f
         ProductsComponent,
         HeaderComponent,
         CadastroReactiveFormsComponent,
+        ProductEditComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
