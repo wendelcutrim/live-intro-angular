@@ -1,0 +1,103 @@
+<div>
+    <h2 class="mt-40">Cadastro de usuário</h2>
+    <form [formGroup]="cadastroForm">
+        <!-- ngForm com input Text -->
+        <div class="input__wrapper">
+            <label for="nome">Nome</label>
+            <input
+                type="text"
+                id="nome"
+                placeholder="digite o seu nome"
+                autocomplete="off"
+                formControlName="nome"
+            />
+        </div>
+
+        <div class="input__wrapper">
+            <label for="email">email</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="digite o seu email"
+                autocomplete="off"
+                formControlName="email"
+            />
+        </div>
+
+        <!-- ngForm com input Radio -->
+        <div>
+            <label>Sexo</label>
+            <br />
+            <label for="masculino">M</label>
+            <input
+                type="radio"
+                id="masculino"
+                value="masculino"
+                formControlName="sexo"
+            />
+
+            <label for="feminino">F</label>
+            <input
+                type="radio"
+                id="feminino"
+                value="feminino"
+                formControlName="sexo"
+            />
+        </div>
+
+        <!-- ngForm com input Checkbox -->
+        <!-- <div>
+            <p>Selecione as tecnologias que você gosta de trabalhar</p>
+            <div class="input__wrapper">
+                <label for="angular">Angular</label>
+                <input type="checkbox" name="angular" id="angular" ngModel />
+            </div>
+
+            <div class="input__wrapper">
+                <label for="react">React</label>
+                <input type="checkbox" name="react" id="react" ngModel />
+            </div>
+
+            <div class="input__wrapper">
+                <label for="vue">Vue</label>
+                <input type="checkbox" name="vue" id="vue" ngModel />
+            </div>
+
+            <div class="input__wrapper">
+                <label for="node">Node JS</label>
+                <input type="checkbox" name="node" id="node" ngModel />
+            </div>
+
+            <div class="input__wrapper">
+                <label for="java">Java</label>
+                <input type="checkbox" name="java" id="java" ngModel />
+            </div>
+        </div> -->
+
+        <!-- ngForm com select mockado -->
+        <div>
+            <h2>Lanches</h2>
+
+            <select name="comida" ngModel>
+                <option value disabled>Selecione um lanche</option>
+                <option value="x-salada">X-Salada</option>
+                <option value="x-hamburguer">X-Hamburger</option>
+                <option value="x-bacon">X-Bacon</option>
+                <option value="doguinho">doguinho</option>
+            </select>
+        </div>
+
+        <!-- ngForm com select simulação de dados da API -->
+        <div>
+            <h2>Bebidas</h2>
+            <select name="bebida" ngModel>
+                <option value disabled>Selecione uma bebida</option>
+                <option *ngFor="let bebida of bebidas" [ngValue]="bebida">
+                    {{ bebida.nome }}
+                </option>
+            </select>
+        </div>
+
+        <p>{{ cadastroForm.value | json }}</p>
+    </form>
+</div>
